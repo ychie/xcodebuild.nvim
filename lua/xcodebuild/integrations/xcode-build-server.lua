@@ -6,6 +6,7 @@
 ---
 ---@brief ]]
 
+local projectConfig = require("xcodebuild.project.config")
 local config = require("xcodebuild.core.config").options.integrations.xcode_build_server
 local util = require("xcodebuild.util")
 
@@ -36,6 +37,10 @@ function M.run_config(projectFile, scheme)
     "-scheme",
     scheme,
   }
+
+  if projectConfig.settings.validateBin == false then
+    table.insert(command, "--skip-validate-bin")
+  end
 
   return vim.fn.jobstart(command, {
     on_exit = function()

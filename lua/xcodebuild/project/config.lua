@@ -25,6 +25,7 @@
 ---@field workingDirectory string|nil parent directory of the project file
 ---@field lastBuildTime number|nil last build time in seconds
 ---@field showCoverage boolean|nil if the inline code coverage should be shown
+---@field validateBin boolean|nil if xcode-build-server should skip bin validation
 
 ---@class DeviceCache
 ---@field scheme string|nil

@@ -494,4 +494,12 @@ function M.select_previous_device()
   debounce_device_selection(nextDeviceIndex)
 end
 
+---Sets whether xcode-build-server should validate bin or not
+---and update xcode-build-server's config accordingly.
+---@param parameter boolean 
+function M.set_build_server_should_validate_bin(validateBin)
+  projectConfig.settings.validateBin = validateBin
+  projectConfig.save_settings()
+end
+
 return M

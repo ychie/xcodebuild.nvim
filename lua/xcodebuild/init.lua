@@ -343,6 +343,10 @@ function M.setup(options)
   vim.api.nvim_create_user_command("XcodebuildOpenInXcode", call(actions.open_in_xcode), { nargs = 0 })
   vim.api.nvim_create_user_command("XcodebuildQuickfixLine", call(actions.quickfix_line), { nargs = 0 })
   vim.api.nvim_create_user_command("XcodebuildCodeActions", call(actions.show_code_actions), { nargs = 0 })
+  vim.api.nvim_create_user_command("XcodebuildSetValidateBin", function(details)
+    local validateBin = details.fargs[1] ~= "false"
+    actions.set_build_server_should_validate_bin(validateBin)
+  end, { nargs = "*" })
 
   -- Backward compatibility
   vim.api.nvim_create_user_command("XcodebuildTestFunc", function()
