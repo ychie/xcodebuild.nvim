@@ -44,7 +44,6 @@ function M.run_config(projectFile, scheme)
 
   return vim.fn.jobstart(command, {
     on_exit = function()
-      require("xcodebuild.integrations.lsp").restart_sourcekit_lsp()
     end,
   })
 end
